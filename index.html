@@ -19,7 +19,7 @@
         <button><img src="search.png" /></button>
       </div>
 
-      <!-- location button to access location -->
+      <!-- New button for location -->
       <div style="text-align:center; margin:10px 0;">
         <button id="locate-btn" style="padding:8px 16px; border:2px solid #090b0c; background:transparent; color:white; border-radius:8px; cursor:pointer;">
           📍 Use My Location
@@ -36,7 +36,7 @@
         <h2 class="city">Kozhikode</h2>
 
         <div class="details">
-          <div class="col">
+          <div class="humid">
             <img src="humidity.png" />
             <div>
               <p class="humidity">50%</p>
@@ -44,8 +44,8 @@
             </div>
           </div>
 
-          <div class="col">
-            <img src="wind.png" />
+          <div class="wind_img">
+            <img src="Windblow.gif" />
             <div>
               <p class="wind">15km/h</p>
               <p>Wind</p>
@@ -66,7 +66,7 @@
       const errorMsg = document.querySelector(".error-message");
       const locateBtn = document.getElementById("locate-btn");
 
-      // Function to get weather by city name manually
+      // Function to get weather by city name
       async function checkWeather(city) {
         try {
           const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -83,8 +83,7 @@
         }
       }
 
-      // Function to get weather by location of the device or user
-      // using try catch method to solve crtical cases when the loaction in not able measure due to lack of internet
+      // Function to get weather by latitude and longitude
       async function checkWeatherByCoords(lat, lon) {
         try {
           const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
@@ -96,7 +95,7 @@
         }
       }
 
-      // wether info deatils to display
+      // Function to display weather data on page
       function displayWeather(data) {
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
@@ -165,4 +164,3 @@
     </script>
   </body>
 </html>
-

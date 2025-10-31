@@ -88,10 +88,29 @@ body{
     width: 40px;
     margin-right: 10px;
   }
-  .humidity, .wind{
-    font-size: 28px;
-    margin-top: -6px;
+  .col .humid{
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
   }
+
+  .humidity{
+    font-size: 30px;
+    margin-top: 10px;
+
+  }
+
+  .col .wind_img{
+     width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+   .wind{
+    font-size: 30px;
+    margin-top: -6px;
+
+  }
+
 
   .weather{
     display:none;

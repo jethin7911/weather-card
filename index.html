@@ -19,7 +19,7 @@
         <button><img src="search.png" /></button>
       </div>
 
-      <!-- New button for location -->
+      <!-- location button to access location -->
       <div style="text-align:center; margin:10px 0;">
         <button id="locate-btn" style="padding:8px 16px; border:2px solid #090b0c; background:transparent; color:white; border-radius:8px; cursor:pointer;">
           📍 Use My Location
@@ -66,7 +66,7 @@
       const errorMsg = document.querySelector(".error-message");
       const locateBtn = document.getElementById("locate-btn");
 
-      // Function to get weather by city name
+      // Function to get weather by city name manually
       async function checkWeather(city) {
         try {
           const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -83,7 +83,8 @@
         }
       }
 
-      // Function to get weather by latitude and longitude
+      // Function to get weather by location of the device or user
+      // using try catch method to solve crtical cases when the loaction in not able measure due to lack of internet
       async function checkWeatherByCoords(lat, lon) {
         try {
           const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
@@ -95,7 +96,7 @@
         }
       }
 
-      // Function to display weather data on page
+      // wether info deatils to display
       function displayWeather(data) {
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
@@ -164,3 +165,4 @@
     </script>
   </body>
 </html>
+
